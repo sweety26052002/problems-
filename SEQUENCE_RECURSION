@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int cnt=0;
+void F(int ind,int n,int k,int arr[],int sum)
+{
+	if(ind==n)
+	{
+		if(sum==k)
+		{
+			cnt++;
+		}
+     return;
+	}
+	sum=sum+arr[ind];
+	F(ind+1,n,k,arr,sum);
+	sum=sum-arr[ind];
+	F(ind+1,n,k,arr,sum);
+	}
+	
+int main()
+{
+	int n,i,k,sum=0;
+	cin>>n>>k;
+	int arr[n];
+	for(i=0;i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	F(0,n,k,arr,sum);
+	cout<<cnt;
+
+}
